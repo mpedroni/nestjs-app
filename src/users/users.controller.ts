@@ -5,6 +5,7 @@ import {
   Get,
   OnModuleInit,
   Param,
+  Patch,
   Post,
   Put,
 } from '@nestjs/common';
@@ -77,5 +78,15 @@ export class UsersController implements OnModuleInit {
   @Delete(':id')
   remove(@Param('id') id: number) {
     return this.client.emit('delete-user', { id });
+  }
+
+  @Patch(':id/activate')
+  activate(@Param('id') id: number) {
+    return this.client.emit('activate-user', { id });
+  }
+
+  @Patch(':id/inactivate')
+  inactivate(@Param('id') id: number) {
+    return this.client.emit('inactivate-user', { id });
   }
 }
