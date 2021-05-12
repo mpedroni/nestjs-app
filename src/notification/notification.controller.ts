@@ -26,8 +26,8 @@ export class NotificationController {
     return this.client.emit('notification-email', data);
   }
 
-  @Post('phone')
+  @Post('sms')
   sendPhone(@Body() data: PhoneDto) {
-    return this.client.emit('notification-phone', data);
+    return this.client.emit('notification-sms', data);
   }
 }
