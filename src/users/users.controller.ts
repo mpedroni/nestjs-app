@@ -54,8 +54,8 @@ export class UsersController implements OnModuleInit {
 
   @Post()
   @ApiBody({ type: UserDto })
-  create(@Body() user: UserDto) {
-    return this.client.emit('create-user', user);
+  create(@Body() user: UserDto): Observable<User> {
+    return this.client.send('create-user', user);
   }
 
   @Put(':id')
